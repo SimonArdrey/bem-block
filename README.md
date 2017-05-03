@@ -2,21 +2,37 @@
 BEM CSS selector generator for use in React
 
 Created a simple BEM library because all the string concatenation was driving me crazy.
-http://getbem.com/naming/
-EXAMPLE:
-Decl
+BEM info: http://getbem.com/naming/
+
+Example
 ```js
-const css = bem('dashboard', 'fullscreen');
+const myBlock = bem('my-block', 'some-modifier');
+// or
+const myBlock = bem('my-block', ['some-modifier', 'another-modifier']);
+// or
+const myBlock = bem('my-block', {
+  'some-modifier': true,
+  'another-modifier': false,
+});
 ```
 Then in JSX
 ```js
-<div className={css()}>
-  <div className={css('widget', 'small')}></div>
+<div className={myBlock()}>
+  <div className={myBlock('some-element', 'and-a-modifier')}></div>
 </div>
 ```
 Will produce:
 ```html
-<div class="dashboard dashboard--fullscreen">
-  <div class="dashboard__widget dashboard__widget--small"></div>
+<div class="my-block my-block--some-modifier">
+  <div class="my-block__some-element my-block__some-element--and-a-modifier"></div>
 </div>
 ```
+You can also nest blocks.
+```js
+  const anotherBlock = myBlock.block('another-block');
+ 
+  anotherBlock('some-element', {
+    my-modifier: true
+  });
+ ```
+Produces `my-block__another_block__some-element my-block__another_block__some-element--my-modifier`
