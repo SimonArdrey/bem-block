@@ -6,11 +6,11 @@ BEM info: http://getbem.com/naming/
 
 Example
 ```js
-const myBlock = bem('my-block', 'some-modifier');
+const myBlock = block('my-block', 'some-modifier');
 // or
-const myBlock = bem('my-block', ['some-modifier', 'another-modifier']);
+const myBlock = block('my-block', ['some-modifier', 'another-modifier']);
 // or
-const myBlock = bem('my-block', {
+const myBlock = block('my-block', {
   'some-modifier': true,
   'another-modifier': false,
 });
