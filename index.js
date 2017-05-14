@@ -1,35 +1,29 @@
-export function block(blockName, ...blockModifiers) {
-  function elementFn(elementName, ...elementModifiers) {
-    let blockModifiersList = blockModifiers.length === 1 && typeof blockModifiers[0] !== 'string'
-      ? blockModifiers[0]
-      : blockModifiers;
+function determineModifiers(modifiers) {
+  const modifiersList = modifiers.length === 1 && typeof modifiers[0] !== 'string'
+    ? modifiers[0]
+    : modifiers;
 
-    blockModifiersList = Array.isArray(blockModifiersList)
-      ? blockModifiersList
-      : Object.keys(blockModifiersList).filter((prop) => blockModifiersList[prop]);
+  return Array.isArray(modifiersList)
+    ? modifiersList
+    : Object.keys(modifiersList).filter((prop) => modifiersList[prop]);
+}
 
-    let elementModifiersList = elementModifiers.length === 1 && typeof elementModifiers[0] !== 'string'
-      ? elementModifiers[0]
-      : elementModifiers;
+module.exports = function block(blockName, ...blockModifiers) {
+  const blockModifiersList = determineModifiers(blockModifiers);
 
-    elementModifiersList = Array.isArray(elementModifiersList)
-      ? elementModifiersList
-      : Object.keys(elementModifiersList).filter((prop) => elementModifiersList[prop]);
+  return function element(elementName, ...elementModifiers) {
+    const elementModifiersList = determineModifiers(elementModifiers);
 
     if (elementName) {
       return [
         `${blockName}__${elementName}`,
-        elementModifiersList.map((modifier) => `${blockName}__${elementName}--${modifier}`),
+        ...elementModifiersList.map((modifier) => `${blockName}__${elementName}--${modifier}`),
       ].join(' ');
     }
 
     return [
       blockName,
-      blockModifiersList.map((modifier) => `${blockName}--${modifier}`),
+      ...blockModifiersList.map((modifier) => `${blockName}--${modifier}`),
     ].join(' ');
-  }
-
-  elementFn.blockName = blockName;
-  elementFn.block = (subblockName, ...params) => block(`${blockName}__${subblockName}`, ...params);
-  return elementFn;
+  };
 }
