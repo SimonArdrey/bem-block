@@ -1,9 +1,18 @@
 # bem-block
 [![Build Status](https://travis-ci.org/SimonArdrey/bem-block.svg?branch=master)](https://travis-ci.org/SimonArdrey/bem-block)
+
 BEM CSS class names generator for use in React
 
 Created a simple BEM library because all the string concatenation was driving me crazy.
 BEM info: http://getbem.com/naming/
+
+## Install
+`npm install bem-block --save`
+
+## Usage
+`import block from 'bem-block';`
+or
+`var block = require('bem-block');`
 
 Example
 ```js
