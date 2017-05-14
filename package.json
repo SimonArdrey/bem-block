@@ -2,9 +2,11 @@
   "name": "bem-block",
   "version": "0.0.1",
   "description": "BEM CSS class name generator for use in React",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "tap test.js"
+    "test": "tap test.js",
+    "build": "babel src --presets babel-preset-es2015 --out-dir lib",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
