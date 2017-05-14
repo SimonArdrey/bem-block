@@ -1,6 +1,6 @@
 {
   "name": "bem-block",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "BEM CSS class name generator for use in React",
   "main": "./lib/index.js",
   "scripts": {
