@@ -1,5 +1,5 @@
 # bem-block
-BEM CSS selector generator for use in React
+BEM CSS class names generator for use in React
 
 Created a simple BEM library because all the string concatenation was driving me crazy.
 BEM info: http://getbem.com/naming/
@@ -27,12 +27,3 @@ Will produce:
   <div class="my-block__some-element my-block__some-element--and-a-modifier"></div>
 </div>
 ```
-You can also nest blocks.
-```js
-  const anotherBlock = myBlock.block('another-block');
- 
-  anotherBlock('some-element', {
-    my-modifier: true
-  });
- ```
-Produces `my-block__another_block__some-element my-block__another_block__some-element--my-modifier`
