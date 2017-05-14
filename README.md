@@ -16,7 +16,7 @@ or
 
 Example
 ```js
-const myBlock = block('my-block', 'some-modifier');
+const myBlock = block('my-block', 'some-modifier', 'another-modifier');
 // or
 const myBlock = block('my-block', ['some-modifier', 'another-modifier']);
 // or
