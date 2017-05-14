@@ -1,5 +1,5 @@
 var tap = require('tap')
-var block = require('./src/index');
+var block = require('./lib/index');
 
 var myBlock = block('my-block', 'my-modifier');
 
